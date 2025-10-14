@@ -13,7 +13,7 @@ from langchain.memory import ConversationBufferWindowMemory
 
 if settings.GROQ_API_KEY:
     print("✅ Using Groq LLM as Provider")
-    llm = ChatGroq(model=settings.GROQ_LLM_MODEL, temperature=settings.TEMPERATURE)
+    llm = ChatGroq(model=settings.GROQ_LLM_MODEL, temperature=settings.TEMPERATURE, api_key=settings.GROQ_API_KEY)
 
 elif settings.OPENROUTER_API_KEY:
     print("✅ Using OpenRouter as LLM Provider")
