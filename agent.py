@@ -1,13 +1,13 @@
 # here i am using settings.py{config.py} with pydantic settings for manage all environments
 from setting import settings
 
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.hub import pull
 # here i am duckduckgo for websearch <which is also free and no api key needed>
 from langchain_community.tools import DuckDuckGoSearchRun
 # here imported 2 module where you can use openrouter or groq as llm provider <both are optional also work on single api key>
 from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
-from langchain.agents import create_tool_calling_agent, AgentExecutor
+from langchain.agents import create_react_agent, AgentExecutor
 # so here i use this built in class in this langchain module for save that session memory <no longterm memory>
 from langchain.memory import ConversationBufferWindowMemory
 
@@ -33,12 +33,7 @@ search_tool = DuckDuckGoSearchRun()
 
 tools = [search_tool]
 
-prompt = ChatPromptTemplate([
-    ('system', 'You are a helpful assistant. You have access to a search tool.'),
-    MessagesPlaceholder(variable_name="chat_history"),
-    ('human', '{input}'),
-    MessagesPlaceholder(variable_name="agent_scratchpad")]
-)
+prompt = pull("hwchase17/react")
 
 memory = ConversationBufferWindowMemory(
 #     it stores last 6 chat convos
@@ -47,13 +42,14 @@ memory = ConversationBufferWindowMemory(
     memory_key="chat_history"
 )
 
-agent = create_tool_calling_agent(llm, tools, prompt)
+agent = create_react_agent(llm, tools, prompt)
 
 agent_executor = AgentExecutor(
     memory=memory,
     agent=agent,
     verbose=True,
-    tools=tools
+    tools=tools,
+    handle_parsing_erros=True
 )
 
 print("\n🤖 Agent is ready! Type 'exit' to end the chat.")
