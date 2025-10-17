@@ -11,6 +11,12 @@ from langchain.agents import create_react_agent, AgentExecutor
 # so here i use this built in class in this langchain module for save that session memory <no longterm memory>
 from langchain.memory import ConversationBufferWindowMemory
 
+# custom tools are defined here
+
+from time_tool import get_current_time
+from mail_tool.logic import send_mail
+from weather.logic import get_weather
+
 if settings.GROQ_API_KEY:
     print("✅ Using Groq LLM as Provider")
     llm = ChatGroq(model=settings.GROQ_LLM_MODEL, temperature=settings.TEMPERATURE, api_key=settings.GROQ_API_KEY)
@@ -31,7 +37,7 @@ else:
 
 search_tool = DuckDuckGoSearchRun()
 
-tools = [search_tool]
+tools = [search_tool, get_current_time, send_mail, get_weather]
 
 prompt = pull("hwchase17/react")
 

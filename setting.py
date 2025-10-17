@@ -1,4 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import EmailStr
 from typing import Optional
 
 class Settings(BaseSettings):
@@ -11,5 +12,14 @@ class Settings(BaseSettings):
     OPENROUTER_LLM_MODEL: Optional[str] = None
     TEMPERATURE: float = 0.0
 
+#     mail tool config
+    SMTP_HOST: Optional[str] = None
+    SMTP_PORT: Optional[int] = 465
+    SMTP_USER: Optional[str] = None
+    SMTP_PASSWORD: Optional[str] = None
+    START_TLS: bool = False
+
+#   here i am using openweather attach api key in .env file
+    OPENWEATHER_API_KEY: Optional[str] = None
 
 settings = Settings()
