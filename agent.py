@@ -1,6 +1,6 @@
 # here i am using settings.py{config.py} with pydantic settings for manage all environments
 from setting import settings
-
+from typing import Any, List
 from langchain.hub import pull
 # here i am duckduckgo for websearch <which is also free and no api key needed>
 from langchain_community.tools import DuckDuckGoSearchRun
@@ -34,10 +34,14 @@ else:
     print("🚨 No API key found for Groq or OpenRouter!!!!")
     exit()
 
+# tools
 
+# notes/to-do list
+def to_do(task: Any):
+    """here you can add"""
 search_tool = DuckDuckGoSearchRun()
 
-tools = [search_tool, get_current_time, send_mail, get_weather]
+tools = [search_tool, get_current_time, get_weather]
 
 prompt = pull("hwchase17/react")
 
