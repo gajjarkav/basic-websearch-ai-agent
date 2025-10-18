@@ -220,8 +220,8 @@ This agent uses the **ReAct (Reasoning + Acting)** pattern:
 
 **Requirements installation fails:**
 - The `requirements.txt` file may have encoding issues
-- Use the manual installation command from Step 4 instead
-- Install core packages: `pip install langchain langchain-community langchain-groq langchain-openai pydantic-settings duckduckgo-search requests`
+- Use the manual installation command from Step 4 (Installation section) instead
+- Ensure all core packages are installed
 
 **Weather tool not working:**
 - Verify OPENWEATHER_API_KEY is set in `.env`
