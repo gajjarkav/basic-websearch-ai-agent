@@ -31,7 +31,7 @@ A simple AI chatbot agent that can search the web and remember conversation hist
 
 4. **Install requirements**:
    ```bash
-   pip install langchain langchain-community langchain-groq langchain-openai pydantic-settings
+   pip install -r requirements.txt
    ```
 
 5. **Setup API Key**:
