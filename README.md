@@ -78,6 +78,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+> **Note:** If you encounter encoding issues with `requirements.txt`, install the key packages manually:
+> ```bash
+> pip install langchain langchain-community langchain-groq langchain-openai pydantic-settings duckduckgo-search requests
+> ```
+
 ## ⚙️ Configuration
 
 ### Step 1: Create Environment File
@@ -213,6 +218,11 @@ This agent uses the **ReAct (Reasoning + Acting)** pattern:
 - Check that you've added either GROQ_API_KEY or OPENROUTER_API_KEY
 - Verify there are no typos in the key names
 
+**Requirements installation fails:**
+- The `requirements.txt` file may have encoding issues
+- Use the manual installation command from Step 4 instead
+- Install core packages: `pip install langchain langchain-community langchain-groq langchain-openai pydantic-settings duckduckgo-search requests`
+
 **Weather tool not working:**
 - Verify OPENWEATHER_API_KEY is set in `.env`
 - Check that the city name is spelled correctly
@@ -220,7 +230,7 @@ This agent uses the **ReAct (Reasoning + Acting)** pattern:
 
 **Import errors:**
 - Make sure virtual environment is activated
-- Run `pip install -r requirements.txt` again
+- Run `pip install -r requirements.txt` again (or use manual installation)
 - Verify Python version is 3.8+
 
 **Agent not responding:**
